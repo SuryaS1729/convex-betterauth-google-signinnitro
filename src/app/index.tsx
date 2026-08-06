@@ -1,9 +1,21 @@
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import GoogleSignInButton from "@/components/GoogleSignInButton";
+import { authClient } from "@/lib/auth-client";
 
 export default function Index() {
+  const router = useRouter();
+  const { data: session } = authClient.useSession();
+
+  useEffect(() => {
+    if (session) {
+      router.replace("/protected");
+    }
+  }, [session, router]);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View

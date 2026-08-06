@@ -1,23 +1,15 @@
 import {
-    GoogleOneTapSignIn,
-    isNoSavedCredentialFoundResponse,
-    isSuccessResponse,
+  GoogleOneTapSignIn,
+  isSuccessResponse,
 } from "react-native-nitro-google-signin";
 
-import { authClient } from "./auth";
+import { authClient } from "./auth-client";
 
 export async function signInWithGoogle() {
   await GoogleOneTapSignIn.checkPlayServices();
-
-  let response = await GoogleOneTapSignIn.signIn();
-
-  if (isNoSavedCredentialFoundResponse(response)) {
-    response = await GoogleOneTapSignIn.createAccount();
-  }
-
-  if (isNoSavedCredentialFoundResponse(response)) {
-    response = await GoogleOneTapSignIn.presentExplicitSignIn();
-  }
+  // Always show the full account picker (all Google accounts on the device).
+  // signIn() would only offer already-authorized accounts after the first login.
+  const response = await GoogleOneTapSignIn.createAccount();
 
   if (!isSuccessResponse(response)) {
     return null;

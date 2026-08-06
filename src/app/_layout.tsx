@@ -14,13 +14,15 @@ const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
 export default function RootLayout() {
   useEffect(() => {
     GoogleOneTapSignIn.configure({
-      webClientId: "autoDetect",
+      webClientId:
+        "304200923353-qgq4dk06lsgef21ufkhhcpmpjrr39sgk.apps.googleusercontent.com",
     });
   }, []);
   return (
     <ConvexBetterAuthProvider client={convex} authClient={authClient}>
       <Stack>
         <Stack.Screen name="index" />
+        <Stack.Screen name="protected" />
       </Stack>
     </ConvexBetterAuthProvider>
   );
