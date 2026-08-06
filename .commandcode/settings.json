@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(ls node_modules/@better-auth/core/dist/api/ 2>/dev/null; echo \"---MIDDLEWARE---\"; find node_modules/@better-auth/core/dist/api -type d 2>/dev/null)",
+      "Shell(grep:*)",
+      "Shell(cat:*)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

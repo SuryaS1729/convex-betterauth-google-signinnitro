@@ -13,6 +13,7 @@ export const authComponent = createClient<DataModel>(components.betterAuth);
 
 export const createAuth = (ctx: GenericCtx<DataModel>) => {
   return betterAuth({
+    baseURL: process.env.SITE_URL,
     trustedOrigins: [
       "convexbetterauthgooglesigninnitro://",
       // Development mode - Expo's exp:// scheme with local IP ranges

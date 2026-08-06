@@ -1,0 +1,8 @@
+# Taste
+- Wants the assistant to activate and use relevant skills (e.g., Convex auth) and follow official framework guides when wiring up integrations. Confidence: 0.4
+- Prefers a lean stack — deliberately avoids Firebase, using pure Google Cloud OAuth clients instead of Firebase/Google Services config files. Confidence: 0.7
+- Likes to verify work with concrete, hands-on evidence rather than just reviewing code — e.g., runnable demo flows (a protected route with a sign-in/sign-out round trip) or inspecting the DB/dashboard for persisted data. Confidence: 0.7
+- Prefers simple, plain UI (e.g., a standard RN `Button`) and keeping the existing working flow over adopting a library's fancier native components — explicitly reversed the native branded Google button in favor of the plain one. Confidence: 0.8
+- Prefers the Google sign-in to always show the full account picker (all accounts on the device) at every login, rather than a low-friction path that only offers previously authorized accounts — flagged that only one account appeared after the first login as a regression. Confidence: 0.6
+- Wants per-user data strictly isolated when building features — explicitly required that each user has their own set of data (e.g., own words), with identity derived server-side from the auth token rather than passed as an argument. Confidence: 0.6
+- Prefers to run long-running dev processes (e.g., `convex dev`) in their own terminal — asked the assistant to stop the background dev server it had started so they could start it themselves, and subsequently ran `npx convex dev` in their own terminal. Wants the assistant to clean up processes it spawns rather than leaving them running. Confidence: 0.8
