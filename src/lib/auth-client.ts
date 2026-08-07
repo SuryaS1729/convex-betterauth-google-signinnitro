@@ -14,4 +14,18 @@ export const authClient = createAuthClient({
     }),
     convexClient(),
   ],
+  // TEMPORARY PERFORMANCE INSTRUMENTATION — count token fetches.
+  fetchOptions: {
+    hooks: {
+      before: async ({ url }) => {
+        if (String(url).includes("/convex/token")) {
+          // @ts-expect-error dev counter
+          globalThis.__tokenFetchCount = (globalThis.__tokenFetchCount ?? 0) + 1;
+          console.log(
+            `[perf:token] fetch #${globalThis.__tokenFetchCount} — ${String(url)}`,
+          );
+        }
+      },
+    },
+  },
 });

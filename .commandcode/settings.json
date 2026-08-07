@@ -3,7 +3,9 @@
     "allow": [
       "Shell(ls node_modules/@better-auth/core/dist/api/ 2>/dev/null; echo \"---MIDDLEWARE---\"; find node_modules/@better-auth/core/dist/api -type d 2>/dev/null)",
       "Shell(grep:*)",
-      "Shell(cat:*)"
+      "Shell(cat:*)",
+      "Shell(ls node_modules/@convex-dev/better-auth/dist/component/ 2>/dev/null; echo ---; ls node_modules/@convex-dev/better-auth/dist/plugins/ 2>/dev/null)",
+      "Shell(npx tsc --noEmit 2 >& 1)"
     ],
     "deny": [],
     "defaultMode": "default"
